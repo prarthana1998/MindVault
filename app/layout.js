@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         <Header/>
         <div className="inset-0 bg-[url('/journal_bg.jpg')] opacity-50 fixed -z-10" />
         <main className='min-h-screen'>{children}</main>
-        <footer className="bg-brown-300 py-12 opacity-70">
+        <footer className="py-12 border-brown-200/20 bg-brown-200/30 backdrop-blur-sm">
           <div className="container mx-auto px-4 text-center text-black-900">
           <p>Made with 💟  by Prarthana</p></div>
         </footer>

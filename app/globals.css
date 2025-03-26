@@ -62,6 +62,11 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
+@layer utilities{
+  .gradient-title{
+    @apply font-extrabold bg-gradient-to-br from-brown-700 via-brown-400 to-brown-200 bg-clip-text tracking-tighter text-transparent pr-2 pb-2
+  }
+}
 
 
 
