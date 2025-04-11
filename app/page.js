@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Book, Feather, Lock, Sparkles } from "lucide-react";
+import { Book, Brain, ChevronRightIcon, Feather, FeatherIcon, Lock, Sparkles } from "lucide-react";
 import Link from "next/link";
 const features = [
   {
@@ -22,11 +22,11 @@ const features = [
   },];
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center h-screen px-8">
+    <div className="container mx-auto px-4 pt-16 pb-16">
       {/* Hero Section */}
-      <div className="container mx-auto max-w-5xl text-center space-y-8 pb-16">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl gradient-title">
-          Journaling Made Easy with MindVault
+      <div className="max-w-5xl mx-auto text-center space-y-8">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl gradient-title">
+          Journaling made easy with MindVault
         </h1>
         <p className="text-lg md:text-xl text-brown-700">
           Start your mindful journey today with this simple, secure, and user-friendly journal.
@@ -47,10 +47,10 @@ export default function Home() {
       </div>
 
         
-      <section id="features" className="mt-24 grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 ">
+      <section id="features" className=" mt-24 grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
         {features.map((features, index) => (
           <Card key={features.title} className="bg-brown-100/50 p-4 rounded-lg backdrop-blur-sm border border-brown-200/20">
-            <CardContent className="p-8">
+            <CardContent className="p-6">
               <div className="h-12 w-12 bg-brown-100 rounded-full flex items-center justify-center mb-4"><features.icon className="h-8 w-8 text-brown-300"/></div>
               <h3 className="text-xl font-semibold text-brown-700">{features.title}</h3>
           {/* Feature Description */}
@@ -59,7 +59,25 @@ export default function Home() {
           </Card>
         ))}
       </section>
+      <div className="container mx-auto px-4 py-24">
+     <Card className="bg-gradient-to-r from-brown-100 via-brown-200 to-brown-300">
+      <CardContent className="p-12 text-center">
+      {/* <Brain className="h-16 w-16 mx-auto mb-6 text-brown-300" /> */}
+        <h3 className="text-3xl font-bold text-brown-700 mb-6">
+          Start writing your daily thoughts here
+        </h3>
+        <p className="text-lg text-brown-700 mb-6">
+        Reflect, grow, and organize your thoughts. Your private space awaits.
+        </p>
+        <Link href="/dashboard">
+    <Button variant="journal" className="animate-bounce">
+      <FeatherIcon className="h-5 w-5" />Start Journaling for free 
+    </Button></Link>
+      </CardContent>
+     </Card>
+     </div>
     </div>
+    
 
   );
 }
