@@ -12,14 +12,14 @@ const Header = async () => {
   return (
     <header className = "container mx-auto">
       
-    <nav className='py-2 px-4 flex justify-between items-center'>
+    <nav className='py-6 px-4 flex justify-between items-center'>
     <Link href="/">
           <Image
             src={"/logo.png"}
-            alt="Reflct Logo"
+            alt="MindVault Logo"
             width={200}
-            height={80}
-            className="h-40 w-auto object-contain"
+            height={60}
+             className="h-[130px] w-auto object-contain"
           />
         </Link>
         {/* Logo */}

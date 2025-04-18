@@ -22,14 +22,14 @@ const features = [
   },];
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 pt-16 pb-16">
+    <div className="container mx-auto px-4 pt-8 pb-16">
       {/* Hero Section */}
       <div className="max-w-5xl mx-auto text-center space-y-8">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl gradient-title">
-          Journaling made easy with MindVault
+        <h1 className="text-5xl md:text-6xl lg:text-7xl gradient-title">
+        Preserve your thoughts in your personal MindVault
         </h1>
         <p className="text-lg md:text-xl text-brown-700">
-          Start your mindful journey today with this simple, secure, and user-friendly journal.
+        A minimal, beautiful journaling experience designed to capture your thoughts, ideas, and memories in an organised and meaningful way.
         </p>
         <div className="flex justify-center gap-4">
           <Link href="/dashboard">

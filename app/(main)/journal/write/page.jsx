@@ -21,13 +21,22 @@ import { createJournalEntry } from "@/actions/journal";
 import { useRouter } from "next/navigation";
 import { getMoodById, MOODS } from "@/app/lib/moods";
 import { toast } from "sonner";
+import { getTheme } from "@/actions/theme";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 const JournalEntryPage = () => {
+  const [isCollectionDialogOpen, setCollectionDialogOpen] = useState(false);
   const{
     loading: actionLoading,
     fn: actionFn,
     data: actionResult,
   } = useFetch(createJournalEntry);
+  const{
+    loading: themesLoading,
+    fn: fetchTheme,
+    data: collections,
+  } = useFetch(getTheme);
+
+  console.log(collections, "collections");
   const router = useRouter();
   const {
     register,
@@ -35,6 +44,7 @@ const JournalEntryPage = () => {
     control,
     getValues,
     formState: { errors },
+    watch
   } = useForm({
     resolver: zodResolver(journalSchema),
     defaultValues: {
@@ -44,6 +54,11 @@ const JournalEntryPage = () => {
       collectionId: "",
     },
   });
+  const moodValue = watch("mood");
+  useEffect(() => {
+    fetchTheme();
+  }, []);
+  
   const isLoading = actionLoading;
   useEffect(() => {
     if (actionResult && !actionLoading) {
@@ -125,7 +140,7 @@ const JournalEntryPage = () => {
         
         <div className="space-y-2">
           <label className="text-sm font-medium">
-            {getMoodById(getValues("mood"))?.prompt ?? "Write your thoughts..."}
+          {getMoodById(moodValue)?.prompt ?? "Write your thoughts..."}
           </label>
           <Controller
             name="content"
@@ -155,8 +170,31 @@ const JournalEntryPage = () => {
         </div>
         <div className="space-y-2">
           <label className="text-sm font-medium">
-            Add to collection(Optional)
+            Add to Theme(Optional)
           </label>
+          <Controller
+            name="collectionId"
+            control={control}
+            render={({ field }) => (
+              <Select
+               onValueChange={(value) => {
+                if(value === 'new') {
+                setCollectionDialogOpen(True);
+              }
+            else{
+              field.onChange(value);
+            }
+            }}
+            value={field.value}>
+                <SelectTrigger>
+          <SelectValue placeholder="Select a Theme" />
+        </SelectTrigger>
+        <SelectContent className="bg-white border border-border shadow-lg">
+                 
+                </SelectContent>
+              </Select>
+            )}
+          />
           
           {errors.content && (
             <p className="text-red-500 text-sm">{errors.collectionId.message}</p>
