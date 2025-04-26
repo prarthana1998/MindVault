@@ -21,20 +21,27 @@ import { createJournalEntry } from "@/actions/journal";
 import { useRouter } from "next/navigation";
 import { getMoodById, MOODS } from "@/app/lib/moods";
 import { toast } from "sonner";
-import { getTheme } from "@/actions/theme";
+import { getTheme, createTheme } from "@/actions/theme";
+import CollectionForm from "@/components/collection-dialog";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 const JournalEntryPage = () => {
-  const [isCollectionDialogOpen, setCollectionDialogOpen] = useState(false);
-  const{
+  const [isCollectionDialogOpen, setIsCollectionDialogOpen] = useState(false);
+// useFetch : wraps API
+  const {
     loading: actionLoading,
     fn: actionFn,
     data: actionResult,
   } = useFetch(createJournalEntry);
-  const{
-    loading: themesLoading,
-    fn: fetchTheme,
+  const {
+    loading: themesLoading, //boolean to check if API call is currently loading
+    fn: fetchTheme, // reference to getTheme
     data: collections,
   } = useFetch(getTheme);
+  const {
+    loading: createThemesLoading,
+    fn: createThemesfn,
+    data: createdTheme,
+  } = useFetch(createTheme);
 
   console.log(collections, "collections");
   const router = useRouter();
@@ -44,7 +51,8 @@ const JournalEntryPage = () => {
     control,
     getValues,
     formState: { errors },
-    watch
+    watch,
+    setValue
   } = useForm({
     resolver: zodResolver(journalSchema),
     defaultValues: {
@@ -58,12 +66,11 @@ const JournalEntryPage = () => {
   useEffect(() => {
     fetchTheme();
   }, []);
-  
-  const isLoading = actionLoading;
+
   useEffect(() => {
     if (actionResult && !actionLoading) {
       // Clear draft after successful publish
-  
+
       router.push(
         `/collection/${
           actionResult.collectionId ? actionResult.collectionId : "unorganized"
@@ -72,16 +79,27 @@ const JournalEntryPage = () => {
 
       toast.success(`Entry created successfully`);
     }
-    }, [actionResult, actionLoading]);
+  }, [actionResult, actionLoading]);
   const onSubmit = handleSubmit(async (data) => {
     const mood = getMoodById(data.mood);
     actionFn({
       ...data,
       moodScore: mood.score,
-      // moodQuery: mood.pixabayQuery,
-      // ...(isEditMode && { id: editId }),
     });
   });
+
+  useEffect(() => {
+    if (createdTheme) {
+      setIsCollectionDialogOpen(false)
+      fetchTheme();
+      setValue("collectionId", createdTheme.id)
+      toast.success(`Theme: ${createdTheme.name} created!`);
+    }
+  }, [createdTheme]);
+  const handleCreateCollection = async (data) => {
+    createThemesfn(data);
+  };
+  const isLoading = actionLoading || themesLoading;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -111,23 +129,27 @@ const JournalEntryPage = () => {
             control={control}
             render={({ field }) => (
               <Select onValueChange={field.onChange} value={field.value}>
-                <SelectTrigger 
-          className={`bg-transparent border-gray-400 h-[46px] py-5 md:text-md ${
-            errors.mood ? "border-red-500" : ""
-          }`}
-        >
-          <SelectValue placeholder="Select a mood..." />
-        </SelectTrigger>
-        <SelectContent className="bg-white border border-border shadow-lg">
+                <SelectTrigger
+                  className={`bg-transparent border-gray-400 h-[46px] py-5 md:text-md ${
+                    errors.mood ? "border-red-500" : ""
+                  }`}
+                >
+                  <SelectValue placeholder="Select a mood..." />
+                </SelectTrigger>
+                <SelectContent className="bg-white border border-border shadow-lg">
                   {Object.values(MOODS).map((mood) => (
-                    <SelectItem  className="cursor-pointer hover:bg-muted focus:bg-muted"
-                     key={mood.id} value={mood.id}>
+                    <SelectItem
+                      className="cursor-pointer hover:bg-muted focus:bg-muted"
+                      key={mood.id}
+                      value={mood.id}
+                    >
                       <span className="flex items-center gap-2">
-                      <span className="text-xl">{mood.emoji}</span>
-                      <span className="text-popover-foreground">{mood.label}</span>
+                        <span className="text-xl">{mood.emoji}</span>
+                        <span className="text-popover-foreground">
+                          {mood.label}
+                        </span>
                       </span>
                     </SelectItem>
-                    
                   ))}
                 </SelectContent>
               </Select>
@@ -137,10 +159,10 @@ const JournalEntryPage = () => {
             <p className="text-red-500 text-sm">{errors.mood.message}</p>
           )}
         </div>
-        
+
         <div className="space-y-2">
           <label className="text-sm font-medium">
-          {getMoodById(moodValue)?.prompt ?? "Write your thoughts..."}
+            {getMoodById(moodValue)?.prompt ?? "Write your thoughts..."}
           </label>
           <Controller
             name="content"
@@ -169,44 +191,57 @@ const JournalEntryPage = () => {
           )}
         </div>
         <div className="space-y-2">
-          <label className="text-sm font-medium">
-            Add to Theme(Optional)
-          </label>
+          <label className="text-sm font-medium">Add to Theme(Optional)</label>
           <Controller
             name="collectionId"
             control={control}
             render={({ field }) => (
               <Select
-               onValueChange={(value) => {
-                if(value === 'new') {
-                setCollectionDialogOpen(True);
-              }
-            else{
-              field.onChange(value);
-            }
-            }}
-            value={field.value}>
+                onValueChange={(value) => {
+                  if (value === "new") {
+                    setIsCollectionDialogOpen(true);
+                  } else {
+                    field.onChange(value);
+                  }
+                }}
+                value={field.value}
+              >
                 <SelectTrigger>
-          <SelectValue placeholder="Select a Theme" />
-        </SelectTrigger>
-        <SelectContent className="bg-white border border-border shadow-lg">
-                 
+                  <SelectValue placeholder="Select a Theme" />
+                </SelectTrigger>
+                <SelectContent className="bg-white border border-border shadow-lg">
+                  {collections?.map((collection) => (
+                    <SelectItem key={collection.id} value={collection.id}>
+                      {collection.name}
+                    </SelectItem>
+                  ))}
+                  <SelectItem value="new">
+                    <span className="text-brown-500">Create New Theme</span>
+                  </SelectItem>
                 </SelectContent>
               </Select>
             )}
           />
-          
+
           {errors.content && (
-            <p className="text-red-500 text-sm">{errors.collectionId.message}</p>
+            <p className="text-red-500 text-sm">
+              {errors.collectionId.message}
+            </p>
           )}
         </div>
         <div className="space-y-4 display:flex">
-          <Button type = "submit"variant="journal">
+          <Button type="submit" variant="journal" disabled={actionLoading}>
             <span>Sumbit</span>
           </Button>
         </div>
       </form>
+      <CollectionForm
+        loading={createThemesLoading}
+        onSuccess={handleCreateCollection}
+        open={isCollectionDialogOpen}
+        setOpen={setIsCollectionDialogOpen}
+      />
     </div>
   );
-}
+};
 export default JournalEntryPage;
