@@ -14,7 +14,6 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
-  SelectGroup,
 } from "@/components/ui/select";
 import useFetch from "@/hooks/use-fetch";
 import { createJournalEntry } from "@/actions/journal";
