@@ -53,8 +53,8 @@ MindVault is currently in **active development**. Here’s what’s done ✅ and
 
 ---
 
-##📬 Contributing
+## 📬 Contributing
 Contributions are welcome! Please feel free to open issues, fork the repo, and submit pull requests.
 
-##📄 License
+## 📄 License
 This project is licensed under the MIT License.
