@@ -42,7 +42,7 @@ export async function createTheme(data) {
       throw new Error("User Not Found");
     }
 
-    const collections = await db.collection.create({
+    const collection = await db.collection.create({
       data: {
         name: data.name,
         description: data.description,
@@ -50,7 +50,7 @@ export async function createTheme(data) {
       },
     });
     revalidatePath("/dashboard");
-    return collections;
+    return collection;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -58,22 +58,20 @@ export async function createTheme(data) {
 
 export async function getTheme() {
   const { userId } = await auth();
-  if (!userId) throw new Error("Unauthorised");
-
-  const req = await request();
+  if (!userId) throw new Error("Unauthorized");
 
   const user = await db.user.findUnique({
     where: { clerkUserId: userId },
   });
+
   if (!user) {
-    throw new Error("User Not Found");
+    throw new Error("User not found");
   }
 
-  const collections = await db.collection.findMany({
-    where: {
-      userId: user.id,
-    },
+  const collection = await db.collection.findMany({
+    where: { userId: user.id },
     orderBy: { createdAt: "desc" },
   });
-  return collections;
+
+  return collection;
 }

@@ -88,16 +88,17 @@ export async function getJournalEntry({ collectionId, orderBy = "desc" }={}) {
           : {}),
       },
       include:{
-        colection:{
+        collection:{
           select:{
             id:true,
             name:true,
           },
         },
-        orderBy: {
-          createdAt: orderBy,
-        },
-      }
+       
+      },
+      orderBy: {
+        createdAt: orderBy,
+      },
     });
     // populating each entry with its corresposnding mood
     const entriesWithMoodData = entries.map((entry) =>({
