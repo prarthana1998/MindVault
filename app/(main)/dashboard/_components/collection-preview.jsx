@@ -1,5 +1,6 @@
 "use client";
 
+import { getMoodById } from "@/app/lib/moods";
 import { CirclePlus } from "lucide-react";
 import Link from "next/link";
 
@@ -25,9 +26,11 @@ const FolderTab = ({ colorClass }) => (
   />
 );
 const EntryPreview = ({entry}) =>{
-    <div>
+    return(
+    <div className="bg-white/50 p-2 rounded text-sm truncate">
+        <span className="mr-2">{getMoodById(entry.mood)?.emoji}</span>
         {entry.title}
-    </div>
+    </div>)
 }
 const CollectionPreview = ({
   id,
@@ -79,8 +82,8 @@ const CollectionPreview = ({
             <div className="flex justify-between text-sm text-gray-600">
                 <span>{entries.length} entries</span>
             </div>
-            {entries.length > 0 &&
-            entries.slice(0,2).map((entry) => <EntryPreview key={entry.id} entry={entry}/>)}
+            {entries.length > 0 ?
+            (entries.slice(0,2).map((entry) => <EntryPreview key={entry.id} entry={entry}/>)):<p className="text-sm text-gray-600">No entries yet</p>}
         </div>
         </div>
         
