@@ -15,15 +15,13 @@ const Header = async () => {
     <nav className='py-6 px-4 flex justify-between items-center'>
     <Link href="/">
           <Image
-            src={"/logo.png"}
+            src={"/Logo.png"}
             alt="MindVault Logo"
             width={200}
             height={60}
              className="h-[130px] w-auto object-contain"
           />
         </Link>
-        {/* Logo */}
-        {/* <Image src = > */}
         <div className="flex items-center gap-4">
         <SignedIn>
             <Link href="/dashboard#collections">
