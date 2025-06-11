@@ -42,12 +42,12 @@ MindVault is currently in **active development**. Here’s what’s done ✅ and
 - Database connection via Prisma + Neon
 - Journal entry creation and saving to DB
 - Security layer with ArcJet
+- Dashboard UI (Frontend)
 
 ### 🔧 In Progress
 
-- Dashboard UI (Frontend)
 - Fetching & displaying journal entries
-- Mood Analytics graph 📊
+- Mood Analytics graph 
 - Edit/Delete functionality
 - Filtering/searching journal entries
 
