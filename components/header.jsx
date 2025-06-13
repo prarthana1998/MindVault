@@ -10,15 +10,15 @@ import Image from 'next/image'
 const Header = async () => {
   await checkUser();
   return (
-    <header className = "container mx-auto">
-    <nav className='py-6 px-4 flex justify-between items-center'>
+    <header className = "w-full px-4">
+    <nav className=' px-2 flex justify-between items-center'>
     <Link href="/">
           <Image
             src={"/Logo.png"}
             alt="MindVault Logo"
             width={200}
             height={60}
-             className="h-[130px] w-auto object-contain"
+             className="h-[120px] w-auto object-contain"
           />
         </Link>
         <div className="flex items-center gap-4">

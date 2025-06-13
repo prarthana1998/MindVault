@@ -64,7 +64,7 @@ body {
 }
 @layer utilities{
   .gradient-title{
-    @apply font-extrabold bg-gradient-to-br from-brown-700 via-brown-400 to-brown-200 bg-clip-text tracking-tighter text-transparent pr-2 pb-2
+    @apply font-bold bg-gradient-to-r from-brown-500 to-brown-300 bg-clip-text text-transparent tracking-tight;
   }
 }
 

@@ -22,14 +22,14 @@ const features = [
   },];
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 pt-8 pb-16">
+    <div className="container mx-auto px-4 pb-16 pt-8">
       {/* Hero Section */}
       <div className="max-w-5xl mx-auto text-center space-y-8">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl gradient-title">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl gradient-title">
         Preserve your thoughts in your personal MindVault
         </h1>
-        <p className="text-lg md:text-xl text-brown-700">
-        A minimal, beautiful journaling experience designed to capture your thoughts, ideas, and memories in an organised and meaningful way.
+        <p className="text-lg md:text-xl text-brown-600">
+        A simple, elegant journal for clear writing, secure storage, and zero distractions.
         </p>
         <div className="flex justify-center gap-4">
           <Link href="/dashboard">
@@ -39,7 +39,7 @@ export default function Home() {
             </Button>
           </Link>
           <Link href="#features">
-          <Button size="lg" variant="outline" className="text-brown-500 rounded-full border-brown-400 hover:bg-brown-400/10">
+          <Button size="lg" variant="outline" className="text-brown-600 rounded-full border-brown-400 hover:bg-brown-400/10">
             Explore Features
           </Button>
           </Link>
@@ -59,8 +59,8 @@ export default function Home() {
           </Card>
         ))}
       </section>
-      <div className="container mx-auto px-4 py-24">
-     <Card className="bg-gradient-to-r from-brown-100 via-brown-200 to-brown-300">
+      <div className="container mx-auto px-4 py-24 ">
+     <Card className="bg-gradient-to-r from-brown-100 via-brown-200 to-brown-300 ">
       <CardContent className="p-12 text-center">
       {/* <Brain className="h-16 w-16 mx-auto mb-6 text-brown-300" /> */}
         <h3 className="text-3xl font-bold text-brown-700 mb-6">
