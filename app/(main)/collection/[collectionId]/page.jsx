@@ -10,9 +10,9 @@ const CollectionPage = async ({ params }) => {
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-col justify-between">
+      <div className="flex justify-between">
         <div className="flex justify-between">
-        <h1 className="text-4xl font-bold gradient-title">
+        <h1 className="text-4xl pb-4 leading-relaxed font-bold gradient-title">
           {collectionId === "unorganized"
             ? "Unorganized Entries"
             : collection?.name || "Collections"}
@@ -24,7 +24,8 @@ const CollectionPage = async ({ params }) => {
       </div>
       <JournalFilters entries={entries.data.entries}/> 
     </div>
-  );
+   
+    );
 };
 
 export default CollectionPage;
