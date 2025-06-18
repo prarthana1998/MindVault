@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import React from "react";
-import { format } from "date-fns";
 import { ChevronRight } from "lucide-react";
 
 const EntryCard = ({ entry }) => {
