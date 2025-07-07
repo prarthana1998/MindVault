@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import React from "react";
 import { ChevronRight } from "lucide-react";
+// import {format} from "date-fns";
 
 const EntryCard = ({ entry }) => {
   return (
@@ -10,7 +11,7 @@ const EntryCard = ({ entry }) => {
         <CardContent className="p-4">
           <div className="flex items-start justify-between">
             <div className="space-y-2">
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flexitems-center gap-2">
                 <span>{entry.moodData.emoji}</span>
 
                 <h3>{entry.title}</h3>
@@ -26,9 +27,9 @@ const EntryCard = ({ entry }) => {
               <ChevronRight className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200" />
             </div>
           </div> */}
-            <time className="text-sm text-gray-500">
+            {/* <time className="text-sm text-gray-500">
               {format(new Date(entry.createdAt), "MMM d, yyyy")}
-            </time>
+            </time> */}
           </div>
           
         </CardContent>

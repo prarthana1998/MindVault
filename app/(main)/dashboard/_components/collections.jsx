@@ -24,7 +24,7 @@ const Collections = ({ collections = [], entriesByCollection}) => {
   const handleCreateCollection = async (data) => {
     createThemesfn(data);
   };
-  if (collections.length === 0) return <></>;
+  //if (collections.length === 0) return <></>;
   return (
     <section id="collection" className="space-y-6">
       <h2 className="text-3xl font-bold gradient-title">Collections</h2>

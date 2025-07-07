@@ -48,7 +48,6 @@ const JournalEntryPage = () => {
     register,
     handleSubmit,
     control,
-    getValues,
     formState: { errors },
     watch,
     setValue

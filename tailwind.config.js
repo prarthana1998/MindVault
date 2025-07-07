@@ -16,6 +16,10 @@ module.exports = {
           600: '#62361b',  // Dark Mocha Brown  
           700: '#432818',  // Espresso Brown  
         },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
       },
     },
   },

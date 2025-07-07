@@ -45,8 +45,6 @@ export default function Home() {
           </Link>
         </div>
       </div>
-
-        
       <section id="features" className=" mt-24 grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
         {features.map((features, index) => (
           <Card key={features.title} className="bg-brown-100/50 p-4 rounded-lg backdrop-blur-sm border border-brown-200/20">

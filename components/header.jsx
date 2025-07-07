@@ -12,10 +12,12 @@ import { checkUser } from "@/lib/checkUser";
 import Image from "next/image";
 
 const Header = async () => {
+  // Checking if the user is authenticated before rendering
   await checkUser();
   return (
     <header className="w-full px-4">
-      <nav className="px-2 flex justify-between items-center">
+      <nav className="px-2 pt-6 flex justify-between items-center">
+        {/* minvault logo */}
         <Link href="/">
           <Image
             src={"/Logo.png"}
@@ -26,6 +28,7 @@ const Header = async () => {
           />
         </Link>
         <div className="flex items-center gap-4">
+           {/* Show "Collections" button only if user is signed in */}
           <SignedIn>
             <Link href="/dashboard#collections">
               <Button variant="journal" className=" items-center gap-2">
