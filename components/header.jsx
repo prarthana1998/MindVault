@@ -30,7 +30,7 @@ const Header = async () => {
         <div className="flex items-center gap-4">
            {/* Show "Collections" button only if user is signed in */}
           <SignedIn>
-            <Link href="/dashboard#collections">
+            <Link href="/dashboard">
               <Button variant="journal" className=" items-center gap-2">
                 <FolderOpen size={18} />
                 <span className="hidden md:inline">Collections</span>

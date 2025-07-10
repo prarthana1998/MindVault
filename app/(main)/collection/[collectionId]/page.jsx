@@ -17,10 +17,16 @@ const CollectionPage = async ({ params }) => {
             ? "Unorganized Entries"
             : collection?.name || "Collections"}
         </h1>
-        {collection && <DeleteCollectionDialogue
-        collection = {collection}
-        entriesCount = {entries.data.entries.length}/>}
-      </div>
+        {collection && (
+            <DeleteCollectionDialogue
+              collection={collection}
+              entriesCount={entries.data.entries.length}
+            />
+          )}
+        </div>
+        {collection?.description && (
+          <h2 className="font-extralight pl-1">{collection?.description}</h2>
+        )}
       </div>
       <JournalFilters entries={entries.data.entries}/> 
     </div>

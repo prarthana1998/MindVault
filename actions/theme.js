@@ -88,11 +88,11 @@ export async function getsingleTheme(collectionId) {
     throw new Error("User not found");
   }
 
-  const collection = await db.collection.findUnique({
+  const collections = await db.collection.findUnique({
     where: { userId: user.id, id: collectionId },
   });
 
-  return collection;
+  return collections;
 }
 
 export async function deleteTheme(collectionId) {

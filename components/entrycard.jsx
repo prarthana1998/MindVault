@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 
 const EntryCard = ({ entry }) => {
   return (
-    <Link href={`journal/${entry.id}`}>
+    <Link href={`/journal/${entry.id}`}>
       <Card className="aspect-square line-clamp-2 bg-brown-100/50 p-4 rounded-lg backdrop-blur-sm border border-brown-200/20">
         <CardContent className="p-4">
           <div className="flex items-start justify-between">
