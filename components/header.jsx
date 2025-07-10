@@ -17,7 +17,7 @@ const Header = async () => {
   return (
     <header className="w-full px-4">
       <nav className="px-2 pt-6 flex justify-between items-center">
-        {/* minvault logo */}
+        {/* mindvault logo */}
         <Link href="/">
           <Image
             src={"/Logo.png"}
@@ -47,7 +47,7 @@ const Header = async () => {
             <SignInButton forceRedirectUrl="/dashboard">
               <Button
                 variant="outline"
-                className="bg-brown-500 rounded-full border-brown-400 hover:bg-brown-400/10 text-white "
+                className="bg-brown-500 rounded-full border-brown-400 hover:bg-brown-400/10 text-white"
               >
                 Log In
               </Button>

@@ -47,7 +47,7 @@ const DeleteCollectionDialogue= ({collection, entriesCount }) => {
   }
   return (
     <div><AlertDialog open={open} onOpenChange={setOpen}>
-    <AlertDialogTrigger>
+    <AlertDialogTrigger asChild>
       <Button variant="destructive">
         <Trash className='h-4 w-4'/>
         Delete</Button></AlertDialogTrigger>

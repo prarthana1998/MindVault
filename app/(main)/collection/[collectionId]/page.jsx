@@ -1,11 +1,11 @@
-import { getJournalEntry } from "@/actions/journal";
+import { getJournalEntries } from "@/actions/journal";
 import { getsingleTheme } from "@/actions/theme";
 import React from "react";
 import DeleteCollectionDialogue from "../_components/deletecollection";
 import JournalFilters from "../_components/journalfilters";
 const CollectionPage = async ({ params }) => {
   const {collectionId} = await params;
-  const entries = await getJournalEntry({ collectionId });
+  const entries = await getJournalEntries({ collectionId });
   const collection = await getsingleTheme(collectionId);
 
   return (

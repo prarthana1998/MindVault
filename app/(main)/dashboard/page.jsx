@@ -1,11 +1,11 @@
-import { getJournalEntry } from "@/actions/journal";
+import { getJournalEntries} from "@/actions/journal";
 import { getTheme } from "@/actions/theme";
 import React from "react";
 import Collections from "./_components/collections";
 
 const Dashboard = async () => {
   const collections = await getTheme(); //collecting collections
-  const entriesData = await getJournalEntry(); //all the journal entries
+  const entriesData = await getJournalEntries(); //all the journal entries
 
   // Group entries by collection
   const entriesByCollection = entriesData?.data?.entries?.reduce(

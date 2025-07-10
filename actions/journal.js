@@ -68,7 +68,7 @@ export async function createJournalEntry(data) {
   }
 }
 
-export async function getJournalEntry({ collectionId, orderBy = "desc" }={}) {
+export async function getJournalEntries({ collectionId, orderBy = "desc" }={}) {
   try {
     const { userId } = await auth();
     if (!userId) throw new Error("Unauthorised");
