@@ -68,7 +68,10 @@ export async function createJournalEntry(data) {
   }
 }
 
-export async function getJournalEntries({ collectionId, orderBy = "desc" }={}) {
+export async function getJournalEntries({
+  collectionId,
+  orderBy = "desc",
+} = {}) {
   try {
     const { userId } = await auth();
     if (!userId) throw new Error("Unauthorised");
@@ -79,40 +82,41 @@ export async function getJournalEntries({ collectionId, orderBy = "desc" }={}) {
     if (!user) {
       throw new Error("User Not Found");
     }
-  
+
     const entries = await db.entry.findMany({
       where: {
         userId: user.id,
-        ...(collectionId==`unorganized`?{collectionId:null}:collectionId
-          ? { collectionId }
-          : {}),
+        ...(collectionId == `unorganized`
+          ? { collectionId: null }
+          : collectionId
+            ? { collectionId }
+            : {}),
       },
-      include:{
-        collection:{
-          select:{
-            id:true,
-            name:true,
+      include: {
+        collection: {
+          select: {
+            id: true,
+            name: true,
           },
         },
-       
       },
       orderBy: {
         createdAt: orderBy,
       },
     });
     // populating each entry with its corresposnding mood
-    const entriesWithMoodData = entries.map((entry) =>({
+    const entriesWithMoodData = entries.map((entry) => ({
       ...entry,
       moodData: getMoodById(entry.mood),
     }));
-    return{
+    return {
       success: true,
       data: {
         entries: entriesWithMoodData,
       },
     };
-  } catch(error) {
-    return {success:false, error: error.message};
+  } catch (error) {
+    return { success: false, error: error.message };
   }
 }
 
@@ -127,26 +131,25 @@ export async function getJournalEntry(id) {
     if (!user) {
       throw new Error("User Not Found");
     }
-  
+
     const entry = await db.entry.findFirst({
       where: {
         id,
         userId: user.id,
       },
-      include:{
-        collection:{
-          select:{
-            id:true,
-            name:true,
+      include: {
+        collection: {
+          select: {
+            id: true,
+            name: true,
           },
         },
-       
       },
     });
-    if(!entry) throw new Error("Entry not found!");
-    return entry
-  } catch(error) {
-    return {success:false, error: error.message};
+    if (!entry) throw new Error("Entry not found!");
+    return entry;
+  } catch (error) {
+    return { success: false, error: error.message };
   }
 }
 
@@ -164,18 +167,122 @@ export async function deleteJournal(id) {
     }
 
     const entry = await db.entry.findFirst({
-      where: { userId: user.id, id,},
+      where: { userId: user.id, id },
     });
 
     if (!entry) throw new Error("Entry not found");
 
     await db.entry.delete({
-      where: {id},
+      where: { id },
     });
-    revalidatePath("/dashboard")
+    revalidatePath("/dashboard");
     return entry;
   } catch (error) {
     throw new Error(error.message);
   }
 }
 
+export async function updateJournal(data) {
+  try {
+    const { userId } = await auth();
+    if (!userId) throw new Error("Unauthorized");
+
+    const user = await db.user.findUnique({
+      where: { clerkUserId: userId },
+    });
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    const entryData = await db.entry.findFirst({
+      where: { userId: user.id, id: data.id },
+    });
+
+    if (!entryData) throw new Error("Entry not found");
+    const mood = MOODS[data.mood.toUpperCase()];
+    if (!mood) throw new Error("Invalid mood");
+
+    const updatedentry = await db.entry.update({
+      where: {
+        id: data.id,
+      },
+      data: {
+        title: data.title,
+        content: data.content,
+        mood: mood.id,
+        moodScore: mood.score,
+        userId: user.id,
+        collectionId: data.collectionId || null,
+      },
+    });
+    revalidatePath("/dashboard");
+    revalidatePath(`journal/${data.id}`);
+    return updatedentry;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function getDraft() {
+  try {
+    const { userId } = await auth();
+    if (!userId) throw new Error("Unauthorized");
+
+    const user = await db.user.findUnique({
+      where: { clerkUserId: userId },
+    });
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    const draft = await db.draft.findFirst({
+      where: {   id: data.id,
+        userId: user.id, },
+    });
+
+    return { success: true, data: draft };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
+export async function saveDraft(data) {
+  try {
+    const { userId } = await auth();
+    if (!userId) throw new Error("Unauthorized");
+
+    const user = await db.user.findUnique({
+      where: { clerkUserId: userId },
+    });
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    const mood = MOODS[data.mood.toUpperCase()];
+    if (!mood) throw new Error("Invalid mood");
+
+    const draft = await db.draft.upsert({
+      where: { userId: user.id },
+      create: {
+        title: data.title,
+        content: data.content,
+        mood: mood.id,
+        moodScore: mood.score,
+        userId: user.id,
+      },
+      update: {
+        title: data.title,
+        content: data.content,
+        mood: mood.id,
+        moodScore: mood.score,
+      },
+    });
+    revalidatePath("/dashboard");
+    return { success: true, data: draft };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
