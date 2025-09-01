@@ -12,8 +12,8 @@ Whether you're reflecting on your day, brainstorming your next big idea, or trac
 - 🧘 **Elegant Writing Experience** – Minimal UI with no distractions—just you and your thoughts.
 - 🔒 **Secure & Private** – Your data is encrypted and protected using [ArcJet](https://arcjet.com/), with authentication powered by [Clerk](https://clerk.dev/).
 - 📈 **Mood Analytics** *(Coming Soon)* – Visualize your emotional journey with mood-based insights and graphs.
-- 🔍 **Filtering & Search** *(Coming Soon)* – Quickly find journal entries based on date, mood, or keywords.
-- 🧹 **Edit/Delete Entries** *(Coming Soon)* – Full control over your journaling history.
+- 🔍 **Filtering & Search**  – Quickly find journal entries based on date, mood, or keywords.
+- 🧹 **Edit/Delete Entries** – Full control over your journaling history.
 
 ---
 
