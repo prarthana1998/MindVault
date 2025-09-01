@@ -5,7 +5,7 @@ export const MOODS = {
       emoji: "🤗",
       score: 10,
       color: "yellow",
-      prompt: "What wonderful things happened today?",
+      prompt: "What wonderful things happened today?"
     },
     ACCOMPLISHED: {
       id: "accomplished",
@@ -13,8 +13,7 @@ export const MOODS = {
       emoji: "⭐",
       score: 9,
       color: "amber",
-      prompt: "What have you achieved?",
-      pixabayQuery: "achievement+success+star",
+      prompt: "What have you achieved?"
     },
     INSPIRED: {
       id: "inspired",
@@ -22,8 +21,7 @@ export const MOODS = {
       emoji: "💫",
       score: 9,
       color: "violet",
-      prompt: "What's sparking your creativity?",
-      pixabayQuery: "inspiration+creative+light",
+      prompt: "What's sparking your creativity?"
     },
     PROUD: {
       id: "proud",
@@ -31,8 +29,7 @@ export const MOODS = {
       emoji: "🦁",
       score: 9,
       color: "amber",
-      prompt: "What achievement are you proud of?",
-      pixabayQuery: "achievement+success+proud",
+      prompt: "What achievement are you proud of?"
     },
     LOVED: {
       id: "loved",
@@ -40,8 +37,7 @@ export const MOODS = {
       emoji: "🥰",
       score: 9,
       color: "pink",
-      prompt: "Who or what is making you feel loved?",
-      pixabayQuery: "love+heart+affection",
+      prompt: "Who or what is making you feel loved?"
     },
     APPRECIATED: {
       id: "appreciated",
@@ -49,8 +45,7 @@ export const MOODS = {
       emoji: "💝",
       score: 8,
       color: "rose",
-      prompt: "Who showed you appreciation?",
-      pixabayQuery: "appreciation+gratitude+heart",
+      prompt: "Who showed you appreciation?"
     },
     MOTIVATED: {
       id: "motivated",
@@ -58,8 +53,7 @@ export const MOODS = {
       emoji: "🎯",
       score: 8,
       color: "emerald",
-      prompt: "What's driving you forward?",
-      pixabayQuery: "motivation+target+goal",
+      prompt: "What's driving you forward?"
     },
     HAPPY: {
       id: "happy",
@@ -67,8 +61,7 @@ export const MOODS = {
       emoji: "😊",
       score: 8,
       color: "amber",
-      prompt: "What's making you smile today?",
-      pixabayQuery: "happy+smile+sunshine",
+      prompt: "What's making you smile today?"
     },
     EXCITED: {
       id: "excited",
@@ -76,8 +69,7 @@ export const MOODS = {
       emoji: "🎉",
       score: 8,
       color: "orange",
-      prompt: "What are you looking forward to?",
-      pixabayQuery: "excited+energetic+celebration",
+      prompt: "What are you looking forward to?"
     },
     CONFIDENT: {
       id: "confident",
@@ -85,8 +77,7 @@ export const MOODS = {
       emoji: "💪",
       score: 8,
       color: "emerald",
-      prompt: "What's boosting your confidence?",
-      pixabayQuery: "confident+strong+power",
+      prompt: "What's boosting your confidence?"
     },
     GRATEFUL: {
       id: "grateful",
@@ -94,8 +85,7 @@ export const MOODS = {
       emoji: "🙏",
       score: 8,
       color: "green",
-      prompt: "What are you thankful for today?",
-      pixabayQuery: "grateful+thankful+blessing",
+      prompt: "What are you thankful for today?"
     },
     CONNECTED: {
       id: "connected",
@@ -103,8 +93,7 @@ export const MOODS = {
       emoji: "🤝",
       score: 8,
       color: "indigo",
-      prompt: "Who made you feel connected today?",
-      pixabayQuery: "connection+together+community",
+      prompt: "Who made you feel connected today?"
     },
     PEACEFUL: {
       id: "peaceful",
@@ -112,8 +101,7 @@ export const MOODS = {
       emoji: "😌",
       score: 7,
       color: "blue",
-      prompt: "What's bringing you peace?",
-      pixabayQuery: "peaceful+calm+serene",
+      prompt: "What's bringing you peace?"
     },
     HOPEFUL: {
       id: "hopeful",
@@ -121,8 +109,7 @@ export const MOODS = {
       emoji: "🌱",
       score: 7,
       color: "green",
-      prompt: "What gives you hope?",
-      pixabayQuery: "hope+growth+spring",
+      prompt: "What gives you hope?"
     },
     CREATIVE: {
       id: "creative",
@@ -130,8 +117,7 @@ export const MOODS = {
       emoji: "🎨",
       score: 7,
       color: "violet",
-      prompt: "What's inspiring your creativity?",
-      pixabayQuery: "creative+art+inspiration",
+      prompt: "What's inspiring your creativity?"
     },
     THOUGHTFUL: {
       id: "thoughtful",
@@ -139,8 +125,7 @@ export const MOODS = {
       emoji: "🤔",
       score: 6,
       color: "slate",
-      prompt: "What's on your mind?",
-      pixabayQuery: "thinking+contemplation+reflection",
+      prompt: "What's on your mind?"
     },
     CURIOUS: {
       id: "curious",
@@ -148,8 +133,7 @@ export const MOODS = {
       emoji: "🧐",
       score: 6,
       color: "teal",
-      prompt: "What's caught your interest?",
-      pixabayQuery: "curious+discovery+explore",
+      prompt: "What's caught your interest?"
     },
     NOSTALGIC: {
       id: "nostalgic",
@@ -157,8 +141,7 @@ export const MOODS = {
       emoji: "🌅",
       score: 5,
       color: "fuchsia",
-      prompt: "What memories are you thinking about?",
-      pixabayQuery: "nostalgia+memories+sunset",
+      prompt: "What memories are you thinking about?"
     },
     NEUTRAL: {
       id: "neutral",
@@ -166,8 +149,7 @@ export const MOODS = {
       emoji: "😐",
       score: 5,
       color: "gray",
-      prompt: "How has your day been?",
-      pixabayQuery: "neutral+balance+calm",
+      prompt: "How has your day been?"
     },
     RESTLESS: {
       id: "restless",
@@ -175,8 +157,7 @@ export const MOODS = {
       emoji: "🌊",
       score: 4,
       color: "blue",
-      prompt: "What's making you feel unsettled?",
-      pixabayQuery: "restless+waves+motion",
+      prompt: "What's making you feel unsettled?"
     },
     TIRED: {
       id: "tired",
@@ -184,8 +165,7 @@ export const MOODS = {
       emoji: "😴",
       score: 4,
       color: "purple",
-      prompt: "What's draining your energy?",
-      pixabayQuery: "tired+sleep+rest",
+      prompt: "What's draining your energy?"
     },
     OVERWHELMED: {
       id: "overwhelmed",
@@ -193,8 +173,7 @@ export const MOODS = {
       emoji: "😵",
       score: 3,
       color: "sky",
-      prompt: "What's feeling like too much?",
-      pixabayQuery: "overwhelmed+chaos+storm",
+      prompt: "What's feeling like too much?"
     },
     ANXIOUS: {
       id: "anxious",
@@ -202,8 +181,7 @@ export const MOODS = {
       emoji: "😰",
       score: 3,
       color: "indigo",
-      prompt: "What's causing your anxiety?",
-      pixabayQuery: "worry+stress+anxiety",
+      prompt: "What's causing your anxiety?"
     },
     DISAPPOINTED: {
       id: "disappointed",
@@ -211,8 +189,7 @@ export const MOODS = {
       emoji: "😞",
       score: 3,
       color: "stone",
-      prompt: "What didn't go as expected?",
-      pixabayQuery: "disappointment+rain+grey",
+      prompt: "What didn't go as expected?"
     },
     FRUSTRATED: {
       id: "frustrated",
@@ -220,8 +197,7 @@ export const MOODS = {
       emoji: "😤",
       score: 3,
       color: "orange",
-      prompt: "What's blocking your progress?",
-      pixabayQuery: "frustrated+blocked+obstacle",
+      prompt: "What's blocking your progress?"
     },
     STRESSED: {
       id: "stressed",
@@ -229,8 +205,7 @@ export const MOODS = {
       emoji: "😫",
       score: 3,
       color: "rose",
-      prompt: "What's pressuring you?",
-      pixabayQuery: "stress+pressure+overwhelmed",
+      prompt: "What's pressuring you?"
     },
     INSECURE: {
       id: "insecure",
@@ -238,8 +213,7 @@ export const MOODS = {
       emoji: "🥺",
       score: 2,
       color: "lime",
-      prompt: "What's making you doubt yourself?",
-      pixabayQuery: "insecure+doubt+shadow",
+      prompt: "What's making you doubt yourself?"
     },
     SAD: {
       id: "sad",
@@ -247,8 +221,7 @@ export const MOODS = {
       emoji: "😢",
       score: 2,
       color: "cyan",
-      prompt: "What's bringing you down?",
-      pixabayQuery: "sad+melancholy+rain",
+      prompt: "What's bringing you down?"
     },
     LONELY: {
       id: "lonely",
@@ -256,8 +229,7 @@ export const MOODS = {
       emoji: "🌙",
       score: 2,
       color: "zinc",
-      prompt: "How could you connect with others?",
-      pixabayQuery: "lonely+solitude+night",
+      prompt: "How could you connect with others?"
     },
     ANGRY: {
       id: "angry",
@@ -265,8 +237,7 @@ export const MOODS = {
       emoji: "😠",
       score: 1,
       color: "red",
-      prompt: "What's frustrating you?",
-      pixabayQuery: "angry+storm+thunder",
+      prompt: "What's frustrating you?"
     },
   };
   

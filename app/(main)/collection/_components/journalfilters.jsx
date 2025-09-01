@@ -30,7 +30,6 @@ const JournalFilters = ({ entries }) => {
 
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
-      // .filter needs a func that returns true/false concept of implicit and explicit return
       filtered = filtered.filter(
         (entry) =>
           entry.title.toLowerCase().includes(query) ||

@@ -237,9 +237,8 @@ export async function getDraft() {
       throw new Error("User not found");
     }
 
-    const draft = await db.draft.findFirst({
-      where: {   id: data.id,
-        userId: user.id, },
+    const draft = await db.draft.findUnique({
+      where: { userId: user.id },
     });
 
     return { success: true, data: draft };
@@ -247,6 +246,7 @@ export async function getDraft() {
     return { success: false, error: error.message };
   }
 }
+
 
 export async function saveDraft(data) {
   try {
@@ -270,14 +270,12 @@ export async function saveDraft(data) {
         title: data.title,
         content: data.content,
         mood: mood.id,
-        moodScore: mood.score,
         userId: user.id,
       },
       update: {
         title: data.title,
         content: data.content,
         mood: mood.id,
-        moodScore: mood.score,
       },
     });
     revalidatePath("/dashboard");

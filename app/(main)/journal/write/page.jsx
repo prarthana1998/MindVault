@@ -16,24 +16,46 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import useFetch from "@/hooks/use-fetch";
-import { createJournalEntry } from "@/actions/journal";
-import { useRouter } from "next/navigation";
+import { createJournalEntry, getDraft, getJournalEntries, getJournalEntry, saveDraft, updateJournal } from "@/actions/journal";
+import { useRouter, useSearchParams } from "next/navigation";
 import { getMoodById, MOODS } from "@/app/lib/moods";
 import { toast } from "sonner";
 import { getTheme, createTheme } from "@/actions/theme";
 import CollectionForm from "@/components/collection-dialog";
+import { content } from "@/tailwind.config";
+import { Loader2 } from "lucide-react";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 const JournalEntryPage = () => {
   const [isCollectionDialogOpen, setIsCollectionDialogOpen] = useState(false);
+  const searchParams = useSearchParams();
+  const editId = searchParams.get("edit")
+  console.log("Edit ID from URL:", editId);
+  const [isEditMode, setEditMode] = useState(false);
+  const {
+    loading: entryLoading,
+    fn: fetchEntry,
+    data: entryData,
+  } = useFetch(getJournalEntry);
+  const {
+    loading: draftLoading,
+    fn: fetchDraft,
+    data: draftData,
+  } = useFetch(getDraft);
+  const {
+    loading: savingDraft,
+    fn: saveDraftFn,
+    data: savedDraft,
+  } = useFetch(saveDraft);
+  
 // useFetch : wraps API
   const {
     loading: actionLoading,
     fn: actionFn,
     data: actionResult,
-  } = useFetch(createJournalEntry);
+  } = useFetch(isEditMode?updateJournal: createJournalEntry);
   const {
-    loading: themesLoading, //boolean to check if API call is currently loading
-    fn: fetchTheme, // reference to getTheme
+    loading: themesLoading, 
+    fn: fetchTheme, 
     data: collections,
   } = useFetch(getTheme);
   const {
@@ -48,8 +70,9 @@ const JournalEntryPage = () => {
     register,
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, isDirty },
     watch,
+    reset,
     setValue
   } = useForm({
     resolver: zodResolver(journalSchema),
@@ -63,11 +86,54 @@ const JournalEntryPage = () => {
   const moodValue = watch("mood");
   useEffect(() => {
     fetchTheme();
-  }, []);
+    if(editId){
+      setEditMode(true);
+      fetchEntry(editId)
+    }
+    else{
+      setEditMode(false);
+      fetchDraft();
+    }
+    
+  }, [editId]);
+  useEffect(()=>{
+    if(isEditMode && entryData)
+    {
+      reset({
+        title: entryData.title || "",
+        content: entryData.content || "",
+        mood: entryData.mood || "",
+        collectionId: entryData.collectionId || "" ,
+    })
+
+    }
+    else if(draftData?.success && draftData?.data){
+      reset({
+        title: draftData.data.title || "",
+        content: draftData.data.content || "",
+        mood: draftData.data.mood || "",
+        collectionId: "" ,
+
+      })
+    }
+    else{
+      reset({
+        title: "",
+        content:  "",
+        mood:  "",
+        collectionId: "" ,
+
+      })
+    }
+
+  },[isEditMode, draftData, entryData ]);
 
   useEffect(() => {
     if (actionResult && !actionLoading) {
       // Clear draft after successful publish
+      if(!isEditMode){
+        saveDraftFn({title:"", mood:"", content:""})
+      }
 
       router.push(
         `/collection/${
@@ -75,7 +141,7 @@ const JournalEntryPage = () => {
         }`
       );
 
-      toast.success(`Entry created successfully`);
+      toast.success(`Entry ${isEditMode? "updated": "created"} created successfully`);
     }
   }, [actionResult, actionLoading]);
   const onSubmit = handleSubmit(async (data) => {
@@ -83,6 +149,7 @@ const JournalEntryPage = () => {
     actionFn({
       ...data,
       moodScore: mood.score,
+      ...(isEditMode && {id: editId})
     });
   });
 
@@ -97,13 +164,29 @@ const JournalEntryPage = () => {
   const handleCreateCollection = async (data) => {
     createThemesfn(data);
   };
-  const isLoading = actionLoading || themesLoading;
+
+  const formData = watch();
+
+  const handleSaveDraft = async() => {
+    if(!isDirty){
+      toast.error("No changes to save");
+      return;
+    }
+    await saveDraftFn(formData)
+  }
+  useEffect(() => {
+      if (savedDraft?.success&& !savingDraft) {
+        toast.success("Draft saved successfully!");
+    }
+  }, [savedDraft, savingDraft]);
+  
+  const isLoading = actionLoading || themesLoading || entryLoading || draftLoading || savingDraft;
 
   return (
     <div className="container mx-auto px-4 py-8">
       <form onSubmit={onSubmit} className="space-y-2 mx-auto">
-        <h1 className="text-4xl md:text-5xl gradient-title">
-          What is on your mind today?
+        <h1 className="text-4xl py-2 md:text-5xl gradient-title">
+          {isEditMode? "Edit Entry":"What is on your mind today?"}
         </h1>
         {isLoading && <BarLoader color="brown" width="100%" className="my-4" />}
         <div className="space-y-2">
@@ -227,10 +310,27 @@ const JournalEntryPage = () => {
             </p>
           )}
         </div>
-        <div className="space-y-4 display:flex">
-          <Button type="submit" variant="journal" disabled={actionLoading}>
-            <span>Sumbit</span>
+        <div className="space-x-4 display:flex">
+        {!isEditMode && (
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleSaveDraft}
+              disabled={savingDraft || !isDirty}
+            >
+              {savingDraft && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              Save as Draft
+            </Button>
+          )}
+          <Button type="submit" variant="journal" disabled={actionLoading || !isDirty}>
+           {isEditMode? "Update": "Submit"}
           </Button>
+          {isEditMode && (<Button onClick={(e)=>{
+            e.preventDefault();
+            router.push(`/journal/${entryData.id}`)
+          }}variant="destructive">
+            Cancel
+          </Button>)}
         </div>
       </form>
       <CollectionForm

@@ -11,21 +11,24 @@ const JournalEntry = async ({ params }) => {
   const entry = await getJournalEntry(id);
   const mood = getMoodById(entry.mood);
   return (
-    <div className="p-6 space-y-6">
+    // padding vertically and space betweem levels
+    <div className="p-6 space-y-4">
       {/* Header */}
+      {/* // Level 1 */}
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between"> 
         {/* groups emoji and title */}
-        <div className="flex items-center gap-4">
+        {/* //level 2 */}
+        <div className="flex items-center gap-2">
           {mood?.emoji && <span className="text-4xl">{mood.emoji}</span>}
           <h1 className="text-5xl font-bold gradient-title pb-4">
             {entry.title}
           </h1>
         </div>
-
+{/* level3 */}
         <div className="flex gap-2">
-          <EditButton />
-          <DeleteDialog />
+          <EditButton entryId={id} />
+          <DeleteDialog entryId={id} />
         </div>
       </div>
 
