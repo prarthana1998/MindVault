@@ -43,13 +43,16 @@ MindVault is currently in **active development**. Here’s what’s done ✅ and
 - Journal entry creation and saving to DB
 - Security layer with ArcJet
 - Dashboard UI (Frontend)
+- Fetching & displaying journal entries
+- Edit/Delete functionality
+- Filtering/searching journal entries
+- Saving Draft
 
 ### 🔧 In Progress
 
-- Fetching & displaying journal entries
 - Mood Analytics graph 
-- Edit/Delete functionality
-- Filtering/searching journal entries
+- AI integration
+
 
 ---
 
