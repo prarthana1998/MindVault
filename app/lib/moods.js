@@ -5,7 +5,7 @@ export const MOODS = {
       emoji: "🤗",
       score: 10,
       color: "yellow",
-      prompt: "What wonderful things happened today?"
+      prompt: "What small thing today made you want to smile or jump for joy?"
     },
     ACCOMPLISHED: {
       id: "accomplished",
@@ -13,7 +13,7 @@ export const MOODS = {
       emoji: "⭐",
       score: 9,
       color: "amber",
-      prompt: "What have you achieved?"
+      prompt: "What's one thing you did today that makes you proud of yourself?"
     },
     INSPIRED: {
       id: "inspired",
@@ -22,14 +22,6 @@ export const MOODS = {
       score: 9,
       color: "violet",
       prompt: "What's sparking your creativity?"
-    },
-    PROUD: {
-      id: "proud",
-      label: "Proud",
-      emoji: "🦁",
-      score: 9,
-      color: "amber",
-      prompt: "What achievement are you proud of?"
     },
     LOVED: {
       id: "loved",
@@ -45,7 +37,7 @@ export const MOODS = {
       emoji: "💝",
       score: 8,
       color: "rose",
-      prompt: "Who showed you appreciation?"
+      prompt: "Who or what made you feel valued or noticed today?"
     },
     MOTIVATED: {
       id: "motivated",
@@ -53,7 +45,7 @@ export const MOODS = {
       emoji: "🎯",
       score: 8,
       color: "emerald",
-      prompt: "What's driving you forward?"
+      prompt: "What’s one small action that could move you forward?"
     },
     HAPPY: {
       id: "happy",
@@ -61,7 +53,7 @@ export const MOODS = {
       emoji: "😊",
       score: 8,
       color: "amber",
-      prompt: "What's making you smile today?"
+      prompt: "What’s a small win today that deserves a celebration?"
     },
     EXCITED: {
       id: "excited",
@@ -127,21 +119,13 @@ export const MOODS = {
       color: "slate",
       prompt: "What's on your mind?"
     },
-    CURIOUS: {
-      id: "curious",
-      label: "Curious",
-      emoji: "🧐",
-      score: 6,
-      color: "teal",
-      prompt: "What's caught your interest?"
-    },
     NOSTALGIC: {
       id: "nostalgic",
       label: "Nostalgic",
       emoji: "🌅",
       score: 5,
       color: "fuchsia",
-      prompt: "What memories are you thinking about?"
+      prompt: "Describe a fond memory that came to mind today"
     },
     NEUTRAL: {
       id: "neutral",
@@ -149,7 +133,7 @@ export const MOODS = {
       emoji: "😐",
       score: 5,
       color: "gray",
-      prompt: "How has your day been?"
+      prompt: "If you repeated today exactly, would it bring you closer to your goals?"
     },
     RESTLESS: {
       id: "restless",
@@ -157,7 +141,7 @@ export const MOODS = {
       emoji: "🌊",
       score: 4,
       color: "blue",
-      prompt: "What's making you feel unsettled?"
+      prompt: "What’s one thing you are doing that feels like you are just doing it for the motion?"
     },
     TIRED: {
       id: "tired",
@@ -165,7 +149,7 @@ export const MOODS = {
       emoji: "😴",
       score: 4,
       color: "purple",
-      prompt: "What's draining your energy?"
+      prompt: "What were the things that felt draining?"
     },
     OVERWHELMED: {
       id: "overwhelmed",
@@ -181,7 +165,7 @@ export const MOODS = {
       emoji: "😰",
       score: 3,
       color: "indigo",
-      prompt: "What's causing your anxiety?"
+      prompt: "If your anxiety had a voice, what would it be saying?"
     },
     DISAPPOINTED: {
       id: "disappointed",
@@ -197,7 +181,7 @@ export const MOODS = {
       emoji: "😤",
       score: 3,
       color: "orange",
-      prompt: "What's blocking your progress?"
+      prompt: "What’s blocking your progress or flow?"
     },
     STRESSED: {
       id: "stressed",
@@ -205,15 +189,7 @@ export const MOODS = {
       emoji: "😫",
       score: 3,
       color: "rose",
-      prompt: "What's pressuring you?"
-    },
-    INSECURE: {
-      id: "insecure",
-      label: "Insecure",
-      emoji: "🥺",
-      score: 2,
-      color: "lime",
-      prompt: "What's making you doubt yourself?"
+      prompt: "Is the stress coming from work, relationships, or something else?"
     },
     SAD: {
       id: "sad",
@@ -221,7 +197,7 @@ export const MOODS = {
       emoji: "😢",
       score: 2,
       color: "cyan",
-      prompt: "What's bringing you down?"
+      prompt: "What was my biggest challenge/struggle today?"
     },
     LONELY: {
       id: "lonely",
@@ -237,7 +213,15 @@ export const MOODS = {
       emoji: "😠",
       score: 1,
       color: "red",
-      prompt: "What's frustrating you?"
+      prompt: "What healthy outlets can you use to release anger?"
+    },
+      REFLECTIVE: {
+      id: "reflective",
+      label: "Reflective",
+      emoji: "💡",
+      score: 2,
+      color: "red",
+      prompt: "What’s one thing the audience would scream at you to do if you were in a movie?"
     },
   };
   

@@ -16,14 +16,13 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import useFetch from "@/hooks/use-fetch";
-import { createJournalEntry, getDraft, getJournalEntries, getJournalEntry, saveDraft, updateJournal } from "@/actions/journal";
+import { createJournalEntry, getDraft, getJournalEntry, saveDraft, updateJournal } from "@/actions/journal";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getMoodById, MOODS } from "@/app/lib/moods";
 import { toast } from "sonner";
 import { getTheme, createTheme } from "@/actions/theme";
 import CollectionForm from "@/components/collection-dialog";
-import { content } from "@/tailwind.config";
-import { Loader2 } from "lucide-react";
+import { Lightbulb, Loader2 } from "lucide-react";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 const JournalEntryPage = () => {
   const [isCollectionDialogOpen, setIsCollectionDialogOpen] = useState(false);
@@ -243,7 +242,8 @@ const JournalEntryPage = () => {
 
         <div className="space-y-2">
           <label className="text-sm font-medium">
-            {getMoodById(moodValue)?.prompt ?? "Write your thoughts..."}
+            <Lightbulb className="inline mb-1 mr-2 h-4 w-4 text-red-700  "/>
+            {"Prompt: " + getMoodById(moodValue)?.prompt ?? "Write your thoughts..."}
           </label>
           <Controller
             name="content"
