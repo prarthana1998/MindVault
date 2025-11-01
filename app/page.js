@@ -61,9 +61,9 @@ export default function Home() {
       </section>
       <div className="container mx-auto px-4 py-24 ">
         <motion.div
-          initial={{ x: -100, opacity: 0 }}
+          initial={{ x: -150, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: 1 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
           className="max-w-3xl mx-auto"
         >
