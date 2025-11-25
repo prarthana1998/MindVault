@@ -11,7 +11,6 @@ Whether you're reflecting on your day, brainstorming your next big idea, or trac
 - **Rich Text Editor** – Express yourself with a powerful, markdown-supported editor that makes formatting a breeze.
 - **Elegant Writing Experience** – Minimal UI with no distractions—just you and your thoughts.
 - **Secure & Private** – Your data is encrypted and protected using [ArcJet](https://arcjet.com/), with authentication powered by [Clerk](https://clerk.dev/).
-- **Mood Analytics** *(Coming Soon)* – Visualize your emotional journey with mood-based insights and graphs.
 - **Filtering & Search**  – Quickly find journal entries based on date, mood, or keywords.
 - **Edit/Delete Entries** – Full control over your journaling history.
 
@@ -55,4 +54,5 @@ Contributions are welcome! Please feel free to open issues, fork the repo, and s
 ## License
 
 This project is licensed under the **MIT License**.
+
 
