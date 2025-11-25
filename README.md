@@ -1,4 +1,4 @@
-#  ✏️ MindVault
+#  MindVault
 
 **MindVault** is a minimal and beautiful journaling web app designed to help you **capture your thoughts, feelings, and memories** in an organised and meaningful way.
 
@@ -6,18 +6,18 @@ Whether you're reflecting on your day, brainstorming your next big idea, or trac
 
 ---
 
-## ✨ Features
+## Features
 
-- 📝 **Rich Text Editor** – Express yourself with a powerful, markdown-supported editor that makes formatting a breeze.
-- 🧘 **Elegant Writing Experience** – Minimal UI with no distractions—just you and your thoughts.
-- 🔒 **Secure & Private** – Your data is encrypted and protected using [ArcJet](https://arcjet.com/), with authentication powered by [Clerk](https://clerk.dev/).
-- 📈 **Mood Analytics** *(Coming Soon)* – Visualize your emotional journey with mood-based insights and graphs.
-- 🔍 **Filtering & Search**  – Quickly find journal entries based on date, mood, or keywords.
-- 🧹 **Edit/Delete Entries** – Full control over your journaling history.
+- **Rich Text Editor** – Express yourself with a powerful, markdown-supported editor that makes formatting a breeze.
+- **Elegant Writing Experience** – Minimal UI with no distractions—just you and your thoughts.
+- **Secure & Private** – Your data is encrypted and protected using [ArcJet](https://arcjet.com/), with authentication powered by [Clerk](https://clerk.dev/).
+- **Mood Analytics** *(Coming Soon)* – Visualize your emotional journey with mood-based insights and graphs.
+- **Filtering & Search**  – Quickly find journal entries based on date, mood, or keywords.
+- **Edit/Delete Entries** – Full control over your journaling history.
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Layer        | Technology |
 |-------------|------------|
@@ -29,11 +29,7 @@ Whether you're reflecting on your day, brainstorming your next big idea, or trac
 
 ---
 
-## 🚀 Project Status
-
-MindVault is currently in **active development**. Here’s what’s done ✅ and what’s coming up 🔧:
-
-### ✅ Completed
+## Features
 
 - Clerk authentication integration
 - Deployed on Vercel
@@ -48,21 +44,15 @@ MindVault is currently in **active development**. Here’s what’s done ✅ and
 - Filtering/searching journal entries
 - Saving Draft
 
-### 🔧 In Progress
-
-- Mood Analytics graph 
-- AI integration
-
-
 ---
 
-
-## 📬 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to open issues, fork the repo, and submit pull requests.
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License**.
+
