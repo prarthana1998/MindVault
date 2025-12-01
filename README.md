@@ -4,17 +4,20 @@
 
 Whether you're reflecting on your day, brainstorming your next big idea, or tracking your mood over time—MindVault offers a secure, distraction-free space to write freely and deeply.
 
----
+![Landing Page](assets/LandingPage.png)
+![Dashboard](assets/Dashboard.png)
+![Rich Text Editor](assets/TextEditor.png)
 
 ## Features
 
-- **Rich Text Editor** – Express yourself with a powerful, markdown-supported editor that makes formatting a breeze.
-- **Elegant Writing Experience** – Minimal UI with no distractions—just you and your thoughts.
-- **Secure & Private** – Your data is encrypted and protected using [ArcJet](https://arcjet.com/), with authentication powered by [Clerk](https://clerk.dev/).
-- **Filtering & Search**  – Quickly find journal entries based on date, mood, or keywords.
-- **Edit/Delete Entries** – Full control over your journaling history.
-
----
+- Beautiful and minimal journaling experience  
+- Rich text editor for expressive entries  
+- Create, edit, delete journal entries  
+- Save drafts before publishing  
+- Search and filter entries  
+- Secure private account space (Clerk)  
+- Dashboard to view timeline of entries
+- Thoughtful journaling prompts for each selected mood
 
 ## Tech Stack
 
@@ -26,30 +29,75 @@ Whether you're reflecting on your day, brainstorming your next big idea, or trac
 | **Editor**   | Shadcn Rich Text Editor |
 | **Deployment** | Vercel |
 
----
+## Architecture
 
-## Features
-
-- Clerk authentication integration
+- Next.js App Router with Server Actions  
+- Prisma ORM + Neon database  
+- Journal CRUD implemented via server actions  
+- Middleware-based auth protection  
+- ArcJet for security + rate limiting  
+- Shadcn rich text editor integration  
+- Optimised dynamic routing for entries  
 - Deployed on Vercel
-- Landing page design
-- Rich text journal editor
-- Database connection via Prisma + Neon
-- Journal entry creation and saving to DB
-- Security layer with ArcJet
-- Dashboard UI (Frontend)
-- Fetching & displaying journal entries
-- Edit/Delete functionality
-- Filtering/searching journal entries
-- Saving Draft
 
----
+## Getting Started (Installation & Setup)
+### Clone the repo
+```bash
+git clone https://github.com/prarthana1998/MindVault.git
+cd mindvault
+```
+
+### Install dependencies
+```bash
+npm install
+```
+
+### Set up environment variables
+Create an `.env` file and add the following:
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
+DATABASE_URL=
+ARCJET_KEY=
+```
+
+### Set up the database
+```bash
+npx prisma migrate dev
+```
+
+### Run dev server
+```bash
+npm run dev
+```
+## Folder Structure
+```bash
+/app
+  /(auth)
+  /(main)
+/actions
+/components
+/hooks
+/lib
+/prisma
+```
+
+## Roadmap
+- Add mood tracking
+- Add analytics dashboard
+- Mobile UI improvements
+- AI-powered journaling prompts
+
+## Link to live project
+[mind-vault-gilt.vercel.app](https://mind-vault-gilt.vercel.app/)
 
 ## Contributing
 
 Contributions are welcome! Please feel free to open issues, fork the repo, and submit pull requests.
-
----
 
 ## License
 
