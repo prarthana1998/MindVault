@@ -2,7 +2,7 @@
 
 **MindVault** is a minimal and beautiful journaling web app designed to help you **capture your thoughts, feelings, and memories** in an organised and meaningful way.
 
-Whether you're reflecting on your day, brainstorming your next big idea, or tracking your mood over time—MindVault offers a secure, distraction-free space to write freely and deeply.
+Whether you're reflecting on your day, brainstorming your next big idea, or tracking your mood over time, MindVault offers a secure, distraction-free space to write freely and deeply.
 
 ![Landing Page](assets/LandingPage.png)
 ![Dashboard](assets/Dashboard.png)
@@ -102,5 +102,6 @@ Contributions are welcome! Please feel free to open issues, fork the repo, and s
 ## License
 
 This project is licensed under the **MIT License**.
+
 
 
